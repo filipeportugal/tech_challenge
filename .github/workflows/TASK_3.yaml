@@ -9,7 +9,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build
-        uses: actions/checkout@v4
         working-directory: task2/
         run: chmod +x ./gradlew && ./gradlew assemble
 
