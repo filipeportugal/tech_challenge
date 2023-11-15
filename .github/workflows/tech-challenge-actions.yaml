@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cd task2/ && ls -la
+      - run: cd task2/ && ls -la && ./gradlew assemble
       - run: ./gradlew assemble
 
   test:
