@@ -15,7 +15,7 @@ jobs:
 
       - name: test
         working-directory: task2/
-        run: ls -la src/test/resources && ./gradlew test
+        run: ls -la src/test/ && ./gradlew test
 
       - name: check-if-file-is-generated
         working-directory: task2/
