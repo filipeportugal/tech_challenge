@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running e2e test
 on: [push]
 jobs:
   build:
-    runs-on: java-19
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: ./gradlew assemble
