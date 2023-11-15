@@ -11,10 +11,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: ./gradlew assemble
+      - run: cd task2/ && ./gradlew assemble
 
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: ./gradlew test
+      - run: cd task2 && ./gradlew test
