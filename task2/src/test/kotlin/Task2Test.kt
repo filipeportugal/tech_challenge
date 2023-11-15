@@ -103,6 +103,7 @@ class TestCarSearchValidation {
         val filterButton = driver.findElement(By.cssSelector("#app > div.dcp-shop > main > " +
                 "div.dcp-shop__container > div.dcp-cars-srp > div.wrapper > div.sidebar > span"))
         wait.until { filterButton.isEnabled && filterButton.isDisplayed }
+        Thread.sleep(500)
         filterButton.click()
         val preOwned = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/" +
                 "div[1]/div[2]/div[1]/div/div/div[1]/wb-tabs/wb-tab-bar/wb-tab[1]/button"))
