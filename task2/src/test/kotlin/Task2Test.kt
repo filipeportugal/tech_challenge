@@ -86,7 +86,7 @@ class TestCarSearchValidation {
                 "div > div:nth-child(4) > div.wb-modal-dialog__wrapper.wb-modal-dialog-wrapper > div > " +
                 "div.wb-modal-dialog-container__content.wb-modal-dialog-content > div > div > div > " +
                 "wb-radio-control:nth-child(1) > label > div"))
-        wait.until { privateToggle.isDisplayed }
+        wait.until { privateToggle.isDisplayed && privateToggle.isEnabled}
         privateToggle.click()
     }
     private fun acceptContinueButton(){
