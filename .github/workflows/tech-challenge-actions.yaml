@@ -19,4 +19,4 @@ jobs:
 
       - name: check-if-file-is-generated
         working-directory: task2/
-        run: cat src/test/resources/*.txt
+        run: cat src/test/kotlin/*.txt
