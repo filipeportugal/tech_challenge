@@ -13,7 +13,7 @@ jobs:
         run: cd task2/ && ./gradlew assemble
 
       - name: test
-        run: cd task2/ && ./gradlew test && ls -la
+        run: ./gradlew test
 
       - name: check-if-file-is-generated
         run: cat task2/src/test/resources/*.txt
