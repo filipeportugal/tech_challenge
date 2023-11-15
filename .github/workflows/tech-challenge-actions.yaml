@@ -2,13 +2,19 @@ name: Car booking validation
 run-name: ${{ github.actor }} is running e2e test
 on: [push]
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cd task2/ && ls -la && chmod +x ./gradlew && ./gradlew assemble
+      - run: cd task2/ && ls -la && chmod +x ./gradlew
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./gradlew assemble
 
   test:
-    runs-on: java-19
+    needs: build
+    runs-on: ubuntu-latest
     steps:
       - run: ./gradlew test
