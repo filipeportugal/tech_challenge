@@ -122,7 +122,7 @@ class TestCarSearchValidation {
                 "div[4]/div/div/div/div/div/ul/li[12]"))
         val year = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/" +
                 "div[4]/div/div/div/div/div/ul/li[4]"))
-        File("src/test/vin_year/Task2_details_vin_year.txt").writeText("${vin.text}\n${year.text}")
+        File("src/test/kotlin/Task2_details_vin_year.txt").writeText("${vin.text}\n${year.text}")
     }
 
     private fun enquireNow(){
