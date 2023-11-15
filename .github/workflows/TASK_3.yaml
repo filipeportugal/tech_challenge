@@ -7,15 +7,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - run: cd task2/ && ls -la && chmod +x ./gradlew
 
       - name: build
+        uses: actions/checkout@v4
         working-directory: task2/
-        run: ./gradlew assemble
+        run: chmod +x ./gradlew && ./gradlew assemble
 
       - name: test
         working-directory: task2/
-        run: ls -la src/test/ && ./gradlew test
+        run: ./gradlew test
 
       - name: check-if-file-is-generated
         working-directory: task2/
