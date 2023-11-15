@@ -21,11 +21,12 @@ class TestCarSearchValidation {
 
     @BeforeEach
     fun setUp() {
-        val browserChoice = System.getProperty("BROWSER", "chrome").lowercase()
+        val browserChoice = System.getProperty("BROWSER")
 
         driver = when (browserChoice) {
-            "chrome" -> chromeDriver()
             "firefox" -> firefoxDriver()
+            "chrome" -> chromeDriver()
+
             else -> {
                 println("Invalid browser name")
                 throw IllegalArgumentException("Invalid browser name")
@@ -34,13 +35,6 @@ class TestCarSearchValidation {
 
         wait = WebDriverWait(driver, Duration.ofSeconds(20))
     }
-
-
-    /*private val chromeOptions = ChromeOptions().addArguments("--start-maximized",
-        "--headless",
-        "--window-size=1920,1080")
-    private val driver = ChromeDriver(chromeOptions)
-    private val wait = WebDriverWait(driver, Duration.ofSeconds(20))*/
 
     @Test
     fun `Input wrong data`() {

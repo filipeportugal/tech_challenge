@@ -14,7 +14,7 @@ jobs:
 
       - name: test
         working-directory: task2/
-        run: export BROWSER=firefox && ./gradlew test -DBROWSER=firefox
+        run: export BROWSER=chrome && ./gradlew test -DBROWSER
 
       - name: check-if-file-is-generated
         working-directory: task2/
