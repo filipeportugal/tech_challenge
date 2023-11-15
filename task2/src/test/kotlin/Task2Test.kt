@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.BeforeEach
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
@@ -15,15 +16,24 @@ import java.time.Duration
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TestCarSearchValidation {
 
-    private val browserChoice = System.getProperty("browser", "chrome")
-    private val driver: WebDriver = when (browserChoice) {
-        "chrome" -> chromeDriver()
-        "firefox" -> firefoxDriver()
-        else -> {
-            println("Invalid browser name")
-            throw IllegalArgumentException("Invalid browser name")}
+    private lateinit var driver: WebDriver
+    private lateinit var wait: WebDriverWait
+
+    @BeforeEach
+    fun setUp() {
+        val browserChoice = System.getProperty("browser", "chrome").lowercase()
+
+        driver = when (browserChoice) {
+            "chrome" -> chromeDriver()
+            "firefox" -> firefoxDriver()
+            else -> {
+                println("Invalid browser name")
+                throw IllegalArgumentException("Invalid browser name")
+            }
+        }
+
+        wait = WebDriverWait(driver, Duration.ofSeconds(20))
     }
-    private  val wait = WebDriverWait(driver, Duration.ofSeconds(20))
 
 
     /*private val chromeOptions = ChromeOptions().addArguments("--start-maximized",
