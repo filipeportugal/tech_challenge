@@ -21,8 +21,8 @@ class TestCarSearchValidation {
 
     @BeforeEach
     fun setUp() {
-        val browserChoice = System.getProperty("BROWSER")
-
+        val browserChoice = System.getProperty("BROWSER", "chrome")
+        println(browserChoice)
         driver = when (browserChoice) {
             "firefox" -> firefoxDriver()
             "chrome" -> chromeDriver()
