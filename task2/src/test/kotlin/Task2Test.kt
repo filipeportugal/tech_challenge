@@ -85,14 +85,14 @@ class TestCarSearchValidation {
                 "div > div:nth-child(4) > div.wb-modal-dialog__wrapper.wb-modal-dialog-wrapper > div > " +
                 "div.wb-modal-dialog-container__content.wb-modal-dialog-content > div > div > div > " +
                 "wb-radio-control:nth-child(1) > label > div"))
-        wait.until { privateToggle.isDisplayed && privateToggle.isEnabled}
+        wait.until { privateToggle.isDisplayed }
         privateToggle.click()
     }
     private fun acceptContinueButton(){
         val continueButton = driver.findElement(By.cssSelector("#app > div.dcp-shop > header > div > " +
                 "div:nth-child(4) > div.wb-modal-dialog__wrapper.wb-modal-dialog-wrapper > div > " +
                 "div.wb-modal-dialog-container__footer.wb-modal-dialog-footer > button"))
-        wait.until { continueButton.isEnabled }
+        wait.until { continueButton.isDisplayed }
         continueButton.click()
     }
 
