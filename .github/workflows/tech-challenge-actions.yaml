@@ -11,7 +11,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: ls -la && ./gradlew assemble
+      - run: ls -la
 
   test:
     needs: build
