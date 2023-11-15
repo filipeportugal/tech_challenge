@@ -2,8 +2,11 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.support.ui.WebDriverWait
 import java.io.File
 import java.time.Duration
@@ -11,11 +14,23 @@ import java.time.Duration
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TestCarSearchValidation {
-    private val chromeOptions = ChromeOptions().addArguments("--start-maximized",
+
+    private val browserChoice = System.getProperty("browser", "chrome")
+    private val driver: WebDriver = when (browserChoice) {
+        "chrome" -> chromeDriver()
+        "firefox" -> firefoxDriver()
+        else -> {
+            println("Invalid browser name")
+            throw IllegalArgumentException("Invalid browser name")}
+    }
+    private  val wait = WebDriverWait(driver, Duration.ofSeconds(20))
+
+
+    /*private val chromeOptions = ChromeOptions().addArguments("--start-maximized",
         "--headless",
         "--window-size=1920,1080")
     private val driver = ChromeDriver(chromeOptions)
-    private val wait = WebDriverWait(driver, Duration.ofSeconds(20))
+    private val wait = WebDriverWait(driver, Duration.ofSeconds(20))*/
 
     @Test
     fun `Input wrong data`() {
@@ -159,6 +174,20 @@ class TestCarSearchValidation {
                 "div[1]/div[7]/div/div[1]/div/div[2]/div/div/div/div/div[3]/p"))
         wait.until { errorMessage.isDisplayed}
         assert(errorMessage.text.contains("An error has occurred."))
+    }
+
+    private fun chromeDriver(): ChromeDriver{
+        val chromeOptions = ChromeOptions().addArguments("--start-maximized",
+            "--headless",
+            "--window-size=1920,1080")
+        return ChromeDriver(chromeOptions)
+    }
+
+    private fun firefoxDriver(): FirefoxDriver{
+        val firefoxOptions = FirefoxOptions().addArguments("--start-maximized",
+            "--headless",
+            "--window-size=1920,1080")
+        return FirefoxDriver(firefoxOptions)
     }
 }
 
