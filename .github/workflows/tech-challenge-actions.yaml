@@ -10,10 +10,13 @@ jobs:
       - run: cd task2/ && ls -la && chmod +x ./gradlew
 
       - name: build
-        run: cd task2/ && ./gradlew assemble
+        working-directory: task2/
+        run: ./gradlew assemble
 
       - name: test
-        run: ./gradlew test
+        working-directory: task2/
+        run: ls -la src/test/resources && ./gradlew test
 
       - name: check-if-file-is-generated
-        run: cat task2/src/test/resources/*.txt
+        working-directory: task2/
+        run: cat src/test/resources/*.txt
